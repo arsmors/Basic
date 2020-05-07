@@ -13,23 +13,27 @@ class LocationList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Locations", style: Styles.navBarTitle)),
       body: ListView.builder(
-          itemCount: this.locations.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              contentPadding: EdgeInsets.all(10.0),
-              leading: _itemThumbnail(this.locations[index]),
-              title: _itemTitle(this.locations[index]),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          LocationDetail(this.locations[index]),
-                    ));
-              },
-            );
-          }),
+        itemCount: this.locations.length,
+        itemBuilder: _listViewItemBuilder,
+      ),
     );
+  }
+
+  Widget _listViewItemBuilder(BuildContext context, int index) {
+    var location = this.locations[index];
+    return ListTile(
+        contentPadding: EdgeInsets.all(10.0),
+        leading: _itemThumbnail(this.locations[index]),
+        title: _itemTitle(this.locations[index]),
+        onTap: () => _navigationToLocationDetail(context, location));
+  }
+
+  void _navigationToLocationDetail(BuildContext context, Location location) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LocationDetail(location),
+        ));
   }
 
   Widget _itemThumbnail(Location location) {
