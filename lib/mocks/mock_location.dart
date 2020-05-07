@@ -70,7 +70,19 @@ class MockLocation extends Location {
           LocationFact(
               title: 'Did You Know',
               text:
-              'The pedestrian path begins a short walk from Shibaura-futo Station along the Yurikamome on the "Tokyo side" of the bridge, while Odaiba Kaihinkoen Station is the nearest station on the "Odaiba side."')
+              'The pedestrian path begins a short walk from Shibaura-futo Station along the Yurikamome on the "Tokyo side" of the bridge, while Odaiba Kaihinkoen Station is the nearest station on the "Odaiba side. '
+                  'dgdgdgkggjdagjdkgjdkgjdkgjdkgjdkgjdkgjad'
+                  'adgkdjgdkgjdakgjdkgkdgjdg'
+                  'akdgjdkgjdkgjdkgjdkgjdkgjkdgjdkg'
+                  'adkgjdkgjdkgjdkgjkdgjkdgjkdgj'
+                  'dagdkgjdagjdakgjdkgjdkgjdkg'
+                  'dagdgdjghdjghdjghdjhg'
+                  'adgjdhgjdghdjghjdghdjghdjgh'
+                  'dgdgdjgdjghdjghdjghdjgdjhgdjgh'
+                  'djghdjghdjghd'
+                  'dgdjgdjghjdgh'
+                  'djghdjghdjghjdg'
+                  '"')
         ]),
   ];
 
