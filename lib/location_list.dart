@@ -3,10 +3,20 @@ import 'package:flutter/material.dart';
 import 'models/location.dart';
 import 'styles.dart';
 
-class LocationList extends StatelessWidget {
-  final List<Location> locations;
+class LocationList extends StatefulWidget {
+  @override
+  createState() => _LocationListState();
+}
 
-  LocationList(this.locations);
+
+class _LocationListState extends State<LocationList> {
+  List<Location> locations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +29,20 @@ class LocationList extends StatelessWidget {
     );
   }
 
+  loadData() async {
+    final locations = await Location.fetchAll();
+    setState(() {
+    this.locations = locations;
+    });
+  }
+
   Widget _listViewItemBuilder(BuildContext context, int index) {
-    var location = this.locations[index];
+    final location = this.locations[index];
     return ListTile(
         contentPadding: EdgeInsets.all(10.0),
-        leading: _itemThumbnail(this.locations[index]),
-        title: _itemTitle(this.locations[index]),
-        onTap: () => _navigationToLocationDetail(context, index));
+        leading: _itemThumbnail(location),
+        title: _itemTitle(location),
+        onTap: () => _navigationToLocationDetail(context, location.id));
   }
 
   void _navigationToLocationDetail(BuildContext context, int locationID) {
