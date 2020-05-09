@@ -8,7 +8,6 @@ class LocationList extends StatefulWidget {
   createState() => _LocationListState();
 }
 
-
 class _LocationListState extends State<LocationList> {
   List<Location> locations = [];
   bool loading = false;
@@ -23,13 +22,15 @@ class _LocationListState extends State<LocationList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Locations", style: Styles.navBarTitle)),
-        body: Column(children: [
-          renderProgressBar(context),
-          Expanded(child: renderListView(context)),
-        ]));
+        body: RefreshIndicator(
+            onRefresh: loadData,
+            child: Column(children: [
+              renderProgressBar(context),
+              Expanded(child: renderListView(context)),
+            ])));
   }
 
-  loadData() async {
+  Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
       final locations = await Location.fetchAll();
@@ -43,9 +44,9 @@ class _LocationListState extends State<LocationList> {
   Widget renderProgressBar(BuildContext context) {
     return (this.loading
         ? LinearProgressIndicator(
-        value: null,
-        backgroundColor: Colors.white,
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.grey))
+            value: null,
+            backgroundColor: Colors.white,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey))
         : Container());
   }
 
