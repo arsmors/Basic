@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'components/default_app_bar.dart';
+import 'components/banner_image.dart';
 import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'styles.dart';
@@ -52,9 +53,10 @@ class _LocationDetailState extends State<LocationDetail> {
 
   Widget _renderBody(BuildContext context, Location location) {
     var result = List<Widget>();
-    result.add(_bannerImage(location.url, BannerImageHeight));
+    result.add(BannerImage(url: location.url, height: BannerImageHeight));
     result.add(_renderHeader());
     result.addAll(_renderFacts(context, location));
+    result.add(_renderBottomSpacer());
     return SingleChildScrollView(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -127,19 +129,9 @@ class _LocationDetailState extends State<LocationDetail> {
     }
   }
 
-  Widget _bannerImage(String url, double height) {
-    Image image;
-    try {
-      if (url.isNotEmpty) {
-        image = Image.network(url, fit: BoxFit.fitWidth);
-      }
-    } catch (e) {
-      print("could not load image $url");
-    }
-    return Container(
-      constraints: BoxConstraints.tightFor(height: height),
-      child: image,
-    );
+  Widget _renderBottomSpacer() {
+    return Container(height: FooterHeight);
   }
+
 }
 
