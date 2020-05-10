@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'components/default_app_bar.dart';
 import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'styles.dart';
@@ -32,7 +33,7 @@ class _LocationDetailState extends State<LocationDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(location.name, style: Styles.navBarTitle)),
+        appBar: DefaultAppBar(),
         body: Stack(children: [
           _renderBody(context, location),
           _renderFooter(context, location),

@@ -13,6 +13,9 @@ class Styles {
   static final String _fontNameDefault = 'Muli';
   static final navBarTitle = TextStyle(
     fontFamily: _fontNameDefault,
+    fontWeight: FontWeight.w600,
+    fontSize: _textSizeDefault,
+    color: _textColorDefault,
   );
   static final headerLarge = TextStyle(
     fontFamily: _fontNameDefault,

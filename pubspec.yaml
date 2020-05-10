@@ -66,6 +66,14 @@ flutter:
       fonts:
         - asset: assets/fonts/Sansation-Regular.ttf
           weight: 300
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 300
+
+
 
   #
   # For details regarding fonts from package dependencies,
